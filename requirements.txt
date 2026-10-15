@@ -1,0 +1,7 @@
+# Tested with Python 3.11 + TensorFlow 2.15.1 (Keras 2). TensorFlow 2.15 needs Python 3.9-3.11.
+# The models in models/ were saved with Keras 2.6.
+tensorflow>=2.15,<2.16
+numpy<2
+opencv-python
+scipy        # needed by ImageDataGenerator augmentation in the training scripts
+matplotlib   # training curves in the training scripts
