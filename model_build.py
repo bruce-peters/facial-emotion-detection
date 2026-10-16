@@ -108,7 +108,8 @@ import matplotlib.pyplot as plt
 
 physical_devices = tf.config.list_physical_devices("GPU")
 print(len(physical_devices))
-tf.config.experimental.set_memory_growth(physical_devices[0], True)
+if physical_devices: # skip on CPU-only machines (no GPU found)
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 # defining model
 model = Sequential()

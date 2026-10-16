@@ -28,13 +28,13 @@ def findFaces(image):
     return faces, gray
 
 def prepareImageForModel(face_img):
-    face_img = cv2.resize(face_img, (224, 224), interpolation=cv2.INTER_AREA)
+    # models/emotion_tl_*.h5 expect input shape (1, 48, 48, 3)
+    face_img = cv2.resize(face_img, (48, 48), interpolation=cv2.INTER_AREA)
     face_img = cv2.cvtColor(face_img,cv2.COLOR_GRAY2RGB)
     face_img = np.array(face_img).astype('float32')
     face_img = face_img / 255.0
     cv2.imshow('Face Data', cv2.resize(face_img, (480, 480))) # display what the model is seeing
     face_img = np.expand_dims(face_img, axis=0)
-    face_img = np.expand_dims(face_img, axis=-1)
     return face_img
 
 lastTime = time.time()
